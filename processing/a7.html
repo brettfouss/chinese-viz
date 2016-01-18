@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)file:///Users/brettfouss/Desktop/a7.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<script src="./a7_files/three.min.js"></script>
+<script src="./a7_files/Detector.js"></script>
+<script src="./a7_files/OrbitControls.js"></script>
+<script src="./a7_files/OBJLoader.js"></script>
+
+<script type="text/javascript">
+
+// Global variables
+var scene, renderer, camera, controls;
+
+window.onload = function () {
+    // See if our browser has webgl
+    if( Detector.webgl ) {
+        renderer = new THREE.WebGLRenderer( { antialias: true } );
+        renderer.setClearColor( new THREE.Color ("lightgrey"))
+    }
+    // else use a substitute renderer, but may be slow
+    else {
+        renderer = new THREE.CanvasRenderer();
+    }
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.getElementById('theContainer').appendChild(renderer.domElement);
+
+    // Create the scene
+    scene = new THREE.Scene();
+
+    // Put a camera into the scene
+    camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
+    camera.position.set(0, 0, 5);
+    scene.add(camera);
+
+    // Create a camera contol
+    controls = new THREE.OrbitControls(camera);
+    controls.addEventListener('change', render);
+
+    // Add our stuff to the scene, kept in a separate function
+    makeSceneGraph()
+    
+    render()
+    animate()
+}
+
+// Animation loop
+function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+}
+
+// Render the scene
+function render() {
+    renderer.render(scene, camera);
+}
+
+/*
+ * Our own stuff goes here
+ * This function accesses global variable scene
+ * and adds our stuff under it.
+ *
+ */
+function makeSceneGraph () {
+
+    addObjectToScene(new Clouds());
+
+}
+
+function addObjectToScene(object) {
+    for (var i = 0; i < object.length; i++) {
+        var component = object[i];
+        scene.add(component);
+    }
+}
+
+function Clouds() {
+
+    var arr = [];
+
+    var g1 = new THREE.SphereGeometry(1, 8, 8);
+    var g2 = new THREE.SphereGeometry(0.5, 8, 8);
+    var g3 = new THREE.SphereGeometry(2, 8, 8);
+
+    var white = new THREE.MeshBasicMaterial({
+        color: 0xffffff
+    });
+
+    var m1 = new THREE.Mesh(g1, white);
+    var m2 = new THREE.Mesh(g1, white);
+    var m3 = new THREE.Mesh(g2, white);
+    var m4 = new THREE.Mesh(g3, white);
+
+    m1.position.set(0, 0);
+    m2.position.set(0, 0.5);
+    m3.position.set(-1, 0.2);
+    m4.position.set(0, 1);
+
+    arr.push(m1);
+    arr.push(m2);
+    arr.push(m3);
+    arr.push(m4);
+
+    return arr;
+
+}
+
+</script>
+</head>
+
+<body>
+    <div id="theContainer"><canvas width="1280" height="466" style="width: 1280px; height: 466px;"></canvas></div>
+
+
+
+</body></html>
