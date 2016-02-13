@@ -16,7 +16,7 @@ float MASS           = 5.0;
 float RESTING_LENGTH = 20.0;
 
 int MAX_FIRST_DEGREE = 10;
-int MAX_SECOND_DEGREE = 10;
+int MAX_SECOND_DEGREE = 5;
 int RADID = 1;
 
 /* controller */
