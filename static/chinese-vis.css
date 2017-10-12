@@ -1,0 +1,21 @@
+.set {
+    cursor: pointer;
+}
+
+#parallelSetTarget {
+    height: 100%;
+    width: 100%;
+    background-color: #ECEFF1;
+    padding: 0rem !important;
+}
+
+#forceDirectedGraphTarget {
+    height: 100%;
+    width: 100%;
+    background-color: #ECEFF1;
+    padding: 0rem !important;
+}
+
+g.node {
+    cursor: pointer !important;
+}

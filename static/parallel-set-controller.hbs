@@ -1,0 +1,45 @@
+<div class="parallelSetInfoPanel">
+    <h6>Complexity and Frequency of Chinese Characters</h6>
+    <p>This is a cool visualization called a <a href="http://www.datavizcatalogue.com/methods/parallel_sets.html" target="_blank">parallel set</a>.
+    Here, we're breaking down the set of all Chinese characters by a few properties.</p>
+    <hr>
+    <h6>Interaction</h6>
+    {{#if focused}}
+    <p> Showing {{n}} random characters of {{length}} total with <span class="text-underline">{{description.i}}
+        complexity</span> that are taught at <span class="text-underline">{{description.j}}
+        grade levels{{#if description.k}}</span> and used <span class="text-underline">{{description.k}}</span>.{{else}}.{{/if}}
+    </p>
+    {{else}}
+    <p>Click on a set (one of the polygons in the visualization), and I'll
+       show you ten random characters in that set.</p>
+    {{/if}}
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th class="text-center">Character</th>
+            <th class="text-center">Pinyin</th>
+            <th>Definition</th>
+        </tr>
+        </thead>
+        <tbody>
+            {{#each characters}}
+            {{#if this}}
+            <tr>
+                <td>{{plus @index 1}}</td>
+                <td class="text-center pinyin">{{this.character}}</td>
+                <td class="text-center pinyin">{{this.pinyin}}</td>
+                <td>{{this.definition}}</td>
+            </tr>
+            {{else}}
+            <tr>
+                <td>{{plus @index 1}}</td>
+                <td class="text-center">--</td>
+                <td class="text-center">--</td>
+                <td>--</td>
+            </tr>
+            {{/if}}
+            {{/each}}
+        </tbody>
+    </table>
+</div>

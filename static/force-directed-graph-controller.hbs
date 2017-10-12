@@ -1,0 +1,35 @@
+<div class="forceDirectedGraphInfoPanel">
+    <h6>The Composition of Chinese Words</h6>
+    <p> Although each Chinese character is itself a distinct word, semantically, most
+    words in Chinese are compound words composed of multiple characters.
+    Furthermore, each Chinese character contains a
+    <a href="https://en.wikipedia.org/wiki/Radical_(Chinese_characters)#Variations_in_the_number_of_radicals">
+    radical</a>, essentially one of 214 simple characters contained within it.
+    However, the relationship between radicals, characters and compound words
+    is far from arbitrary. </p>
+    <hr>
+    <h6>Legend</h6>
+    <table class="table table-sm text-center" style="table-layout:fixed;">
+        <tr>
+            <td style="background-color:red;color:white;">
+                radical
+            </td>
+            <td style="background-color:orange;color:white;">
+                character
+            </td>
+            <td style="background-color:grey;color:white;">
+                compound word
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <h6>Interaction</h6>
+    <p>Click on a node to see related radicals, characters and compound words. Hover
+       to view pinyin and English definition of word. Or, select a specific radical
+       below.</p>
+    <div class="container-fluid no-pad" id="select-radical">
+        {{#each radicals}}
+        <button type="button" class="btn radical-selector">{{this.name}}</button>
+        {{/each}}
+    </div>
+</div>

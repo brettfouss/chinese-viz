@@ -1,0 +1,215 @@
+body {
+        padding-top: 1.0rem;
+}
+
+#portfolio .row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.vis {
+        padding: 1.0rem;
+}
+
+.page {
+        padding: 10.0rem;
+        padding-top: 0.0rem;
+        padding-bottom: 0.0rem;
+        font-family: 'Abel', sans-serif;
+}
+
+.page .top-pad {
+        padding-top: 5.0rem;
+}
+
+@media(max-width: 940px) {
+        .page {
+                padding: 10.0rem;
+                padding-top: 0.0rem;
+                padding-bottom: 0.0rem;
+        }
+        .page .top-pad {
+                padding-top: 5.0rem;
+        }
+}
+
+@media(max-width: 720px) {
+        .page {
+                padding: 5.0rem;
+                padding-top: 0.0rem;
+                padding-bottom: 0.0rem;
+        }
+        .page .top-pad {
+                padding-top: 2.5rem;
+        }
+}
+
+@media(max-width: 576px) {
+        .page {
+                padding: 1.0rem;
+                padding-top: 0.0rem;
+                padding-bottom: 0.0rem;
+        }
+        .page .top-pad {
+                padding-top: 1.0rem;
+        }
+}
+
+h1, h2, h3, h4, h5, h6 {
+        font-family: 'Secular One', sans-serif;
+}
+
+hr {
+        border-top: 1px solid #ECEFF1;
+}
+
+.btn-outline-secondary {
+        color: #B0BEC5;
+        border-color: #ECEFF1;
+}
+
+.btn-outline-secondary:hover {
+        color: #B0BEC5;
+        border-color: #B0BEC5;
+        background-color: #ECEFF1;
+}
+
+a {
+        color: #3053AB;
+}
+
+#nav-name {
+    cursor: pointer;
+}
+
+.portfolio-link:hover {
+    cursor: pointer !important;
+    text-decoration: underline !important;
+    text-decoration-color: #ffdd32 !important;
+}
+
+.content {
+        padding: 0.0rem;
+}
+
+button {
+    cursor: pointer;
+}
+
+div.article {
+    padding-left: 7.5rem;
+    padding-right: 7.5rem;
+    font-size: 24px;
+    font-family: 'Crimson Text', serif;
+}
+
+.spaced {
+        margin-top: 1.5rem;
+}
+
+.splash {
+        font-size: 48px;
+        font-family: 'Abel', sans-serif;
+        color: #fff;
+        background-color: #ffdd32;
+        padding: 1.5rem;
+}
+
+.spotlight {
+        padding: 2.0rem;
+        margin: 0.0rem;
+        margin-top: 1.0rem;
+        background-color: #ECEFF1;
+        font-size: 18px;
+}
+
+.spotlight .btn {
+        color: #B0BEC5;
+        background-color: #ECEFF1;
+        border-color: #CFD8DC;
+}
+
+.spotlight .btn:hover {
+        color: #B0BEC5;
+        background-color: #CFD8DC;
+        border-color: #B0BEC5;
+}
+
+.header {
+        border-bottom: 3px solid #000;
+        border-radius: 0px;
+        padding: 0.0rem;
+        background-color: #fff;
+}
+
+.footer {
+        margin-top: 2.0rem;
+        border-top: 3px solid #ECEFF1;
+        border-radius: 0px;
+        padding: 0.0rem;
+        padding-top: 2.0rem;
+        min-height: 150px;
+        background-color: #263238;
+        color: #fff !important;
+}
+
+.custom-nav {
+        text-align: right;
+        bottom: 0;
+}
+
+.no-pad {
+        padding: 0.0rem !important;
+}
+
+.left-gutter {
+        font-size: 12px;
+        overflow: hidden;
+}
+
+.right-gutter {
+        font-size: 12px;
+        overflow: hidden;
+}
+
+.darker {
+        background-color: #ECEFF1;
+}
+
+.definition-text {
+        font-size: 10px;
+        color: #000;
+}
+
+.tool-box {
+        min-width: 200px;
+        max-width: 200px;
+        background-color: #fff;
+        border: 2px solid #000;
+        padding: 10px;
+}
+
+.tag {
+        font-size: 100%;
+}
+
+/* Tables */
+.table td, .table th {
+        padding: 0.25rem;
+}
+
+/* Force-Directed Graph */
+.radical-button {
+        font-size: 16px;
+        padding: 0.25rem;
+        border-radius: 0px;
+}
+
+/* Google Fonts */
+.body-font {
+        font-family: 'Abel', sans-serif;
+}
+
+.header-font {
+        font-family: 'Alegreya', serif;
+}

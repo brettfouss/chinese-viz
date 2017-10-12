@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+        <base href="/">
+
+        <!-- GOOGLE FONTS -->
+        <link href="https://fonts.googleapis.com/css?family=Abel|Crimson+Text|Secular+One" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="static/custom.css"/>
+        <link rel="stylesheet" type="text/css" href="static/chinese-vis.css"/>
+        <link rel="stylesheet" type="text/css" href="static/force-directed-graph-controller.css"/>
+        <link rel="stylesheet" type="text/css" href="static/parallel-set-controller.css"/>
+
+</head>
+<body>
+
+        <!-- the header -->
+        <div class="page top-pad">
+        <div class="row header no-pad">
+        <div class="col-sm-6">
+                <h5>Brett Fouss</h5>
+        </div>
+        <div class="col-sm-6">
+                <div class="custom-nav no-pad">
+                        <a href="#"> Home </a>
+                        /
+                        <a href="#portfolio"> Portfolio </a>
+                        /
+                        <a href="#"> Resume </a>
+                </div>
+        </div>
+        </div>
+        </div>
+        <!-- end of the header -->
+
+        <!-- the page -->
+        <div class="page container article">
+            <br>
+            <h3 class="text-center">Visualizing the Chinese Language</h3>
+            <br>
+            <p>
+                Due to it's use of <a href="https://en.wikipedia.org/wiki/Logogram">logographic</a> characters, Chinese is arguably the most
+                complex and fascinating written language in the world. While most other
+                civilizations and cultures developed alphabet-based writing systems, the unique
+                and ancient Chinese writing system has survived thousands of years.
+            </p>
+            <p>
+                Each word in written Chinese is composed of a distinct character or combination of characters; characters offer
+                no indication of how to pronounce the word. The pronunciations of each word
+                must be memorized. The system is so inherently difficult that illiteracy was high
+                in China for thousands of years. In fact, in the 1930's and 40's, Chinese scholars created
+                <a href="https://en.wikipedia.org/wiki/Simplified_Chinese_characters">simplified characters</a>
+                in order to improve literacy.
+            </p>
+            <br>
+        </div>
+        <div class="page container-fluid content">
+          <br>
+          <div class="row no-pad">
+          <div class="col-sm-4" id="parallelSetControllerTarget">
+          </div>
+          <div class="col-sm-8" id="parallelSetTarget" style="height:700px;width:100%;">
+          </div>
+          </div>
+        </div>
+        <div class="page container-fluid content">
+          <br>
+          <div class="row no-pad">
+          <div class="col-sm-4" id="forceDirectedGraphControllerTarget">
+          </div>
+          <div class="col-sm-8" id="forceDirectedGraphTarget" style="height:700px;width:100%;">
+          </div>
+          </div>
+        </div>
+        <!-- end of the page -->
+
+        <!-- the footer -->
+        <div class="row footer">
+                <div class="page">
+                <div class="col-sm-12">
+                        <p class="text-sm-left">Thanks for visiting!</p>
+                </div>
+                </div>
+        </div>
+        <!-- end of the footer -->
+
+        <!-- external dependencies -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.2/d3.min.js"></script>
+
+        <!-- custom scripts -->
+        <script src="index.js"></script>
+        <script src="static/parallel-set.js"></script>
+        <script src="static/parallel-set-controller.js"></script>
+        <script src="static/force-directed-graph.js"></script>
+        <script src="static/force-directed-graph-controller.js"></script>
+        <script src="static/tooltip.js"></script>
+
+</body>
+</html>
