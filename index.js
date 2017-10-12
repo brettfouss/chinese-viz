@@ -1,9 +1,9 @@
 (function() {
 
-    var CHINESE_VIS_DATA_PATH = "static/chinese-vis-data.json";
-    var PARALLEL_SET_CONTROLLER_TEMPLATE_PATH = "static/parallel-set-controller.hbs";
-    var FORCE_DIRECTED_GRAPH_DATA_PATH = "static/nodes.json";
-    var FORCE_DIRECTED_GRAPH_CONTROLLER_TEMPLATE_PATH = "static/force-directed-graph-controller.hbs";
+    var CHINESE_VIS_DATA_PATH = "chinese-vis/static/chinese-vis-data.json";
+    var PARALLEL_SET_CONTROLLER_TEMPLATE_PATH = "chinese-vis/static/parallel-set-controller.hbs";
+    var FORCE_DIRECTED_GRAPH_DATA_PATH = "chinese-vis/static/nodes.json";
+    var FORCE_DIRECTED_GRAPH_CONTROLLER_TEMPLATE_PATH = "chinese-vis/static/force-directed-graph-controller.hbs";
 
     function loadData(path) {
         var deferred = jQuery.Deferred();
