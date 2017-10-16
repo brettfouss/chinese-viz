@@ -29,7 +29,7 @@
        below.</p>
     <div class="container-fluid no-pad" id="select-radical">
         {{#each radicals}}
-        <button type="button" class="btn radical-selector">{{this.name}}</button>
+        <button type="button" class="btn radical-selector {{#isActive this.id}}active{{/isActive}}" name="{{this.id}}">{{this.name}}</button>
         {{/each}}
     </div>
 </div>

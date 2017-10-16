@@ -26,3 +26,25 @@
     background-color: yellow !important;
     z-index:1000;
 }
+
+.radical-selector.active {
+    background-color: yellow !important;
+}
+
+.d3-tip {
+  line-height: 1;
+  padding: 15px;
+  background: #fff;
+  color: #000;
+  border: 3px solid #000;
+  width: 300px;
+}
+
+.pinyin {
+    font-family: "Noto Serif", serif;
+}
+
+.d3-tip p {
+    font-family: 'Abel', sans-serif;
+    font-size: 14px;
+}

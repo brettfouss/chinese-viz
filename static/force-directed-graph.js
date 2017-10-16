@@ -1,6 +1,7 @@
 var ForceDirectedGraph = (function() {
 
     var data = {};
+    var state = {};
     var simulation = {};
     var dim = {
         "w": 0,
@@ -9,6 +10,24 @@ var ForceDirectedGraph = (function() {
 
     var node = null;
     var link = null;
+
+    var tooltipTemplate = null;
+    var tooltip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([-8, 0])
+        .html((d) => d);
+
+    var encodings = {
+        "nodeStroke": function(d) {
+            if (d.type == "radical") {
+                return "red";
+            } else if (d.type == "character") {
+                return "orange";
+            } else {
+                return "grey";
+            }
+        }
+    };
 
     function initFrame() {
 
@@ -31,6 +50,7 @@ var ForceDirectedGraph = (function() {
 
             node = d3.select(".nodes").selectAll(".node");
             link = d3.select(".links").selectAll(".link");
+            selection.call(tooltip);
 
     }
 
@@ -61,7 +81,7 @@ var ForceDirectedGraph = (function() {
     function update(selected) {
 
         var maxDepth = 3;
-        var maxNum = 15;
+        var maxNum = 20;
         let root = data[selected];
         let nodeSet = new Set();
         let links = new Array();
@@ -86,7 +106,7 @@ var ForceDirectedGraph = (function() {
                 result.add(arr[randIndex]);
             }
             for (var i = 0; i < arr.length; i++) {
-                if (data[arr[i]].type === "radical" || data[arr[i]].type === "character") {
+                if (data[arr[i]].type === "radical") {
                     result.add(arr[i]);
                 }
             }
@@ -143,45 +163,33 @@ var ForceDirectedGraph = (function() {
                     nodes[i].y = dim.h/2;
                 }
             }
-        })
+        });
 
         node = node.data(nodes, (d) => d.id);
-        node.exit()
-            .transition()
-            .attr("r", 0)
-            .remove();
+        node.exit().remove();
 
         node = node.enter()
                    .append("g")
                    .attr("class", "node")
+                   .attr("name", (d) => d.id)
                    .merge(node);
 
         node.append("circle")
             .attr("class", function(d) {
-                return "node-circle " + d.name;
+                return "node-circle";
             })
-            .call(function(n) { n.transition().attr("r", 20); })
+            .attr("r", 20)
             .style("fill", "#fff")
-            .style("stroke", function(d) {
-                if (d.type == "radical") {
-                    return "red";
-                } else if (d.type == "character") {
-                    return "orange";
-                } else {
-                    return "grey";
-                }
-            })
-            .style("stroke-width", "3px")
-            .on("click", restart);
+            .style("stroke", encodings.nodeStroke)
+            .style("stroke-width", "3px");
 
         node.append("text")
             .attr("class", "node-text")
-            .attr("x", function(d) { return d.x; })
-            .attr("y", function(d) { return d.y; })
-            .text(function(d) { return d.name; })
-            .style("font-size", "14px")
-            .style("text-anchor", "middle")
-            .on("click", restart);
+            .attr("x", (d) => d.x)
+            .attr("y", (d) => d.y)
+            .text((d) => d.name)
+            .style("font-size", "12px")
+            .style("text-anchor", "middle");
 
         link = link.data(links, (d) => d.source.id + "-" + d.target.id);
         link.exit().remove();
@@ -198,11 +206,23 @@ var ForceDirectedGraph = (function() {
 
     }
 
-    function restart(node) {
-        var id = "." + node.name;
-        var ticks = 0;
-        var next = update(node.id);
+    function setHighlight(elem, highlighted) {
+
+        var d = d3.select(elem).datum();
+        var stroke = (highlighted ? "#000" : encodings.nodeStroke(d));
+        var strokeWidth = (highlighted ? "4px" : "3px");
+        var tip = (highlighted ? tooltip.show : tooltip.hide);
+
+        $(elem).find(".node-circle").css("stroke", stroke);
+        $(elem).find(".node-circle").css("stroke-width", strokeWidth);
+        tip(tooltipTemplate(d), elem);
+
+    }
+
+    function restart(id) {
+        var next = update(id);
         draw(next.nodes, next.links);
+        return next;
     }
 
     function ticked () {
@@ -214,6 +234,17 @@ var ForceDirectedGraph = (function() {
                                   .attr("y", function(d) { return d.y + 5; });
         d3.selectAll(".node-circle").attr("cx", function(d) { return d.x; })
                                     .attr("cy", function(d) { return d.y; });
+    }
+
+    function initTooltip(path, data) {
+        var deferred = jQuery.Deferred();
+        $.get(path).then(function(t) {
+            tooltipTemplate = Handlebars.compile(t);
+            deferred.resolve(data);
+        }, function(error) {
+            deferred.reject(error);
+        });
+        return deferred.promise();
     }
 
     function init(filedata, elem) {
@@ -228,7 +259,10 @@ var ForceDirectedGraph = (function() {
     }
 
     return {
-        "init": init
+        "init": init,
+        "initTooltip": initTooltip,
+        "restart": restart,
+        "setHighlight": setHighlight
     };
 
 }());

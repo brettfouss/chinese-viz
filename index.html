@@ -18,7 +18,9 @@
         <!-- the page -->
         <div class="page container article">
             <br>
+            <br>
             <h3 class="text-center">Visualizing the Chinese Language</h3>
+            <br>
             <br>
             <p>
                 Due to it's use of <a target="_blank" href="https://en.wikipedia.org/wiki/Logogram">logographic</a> characters, Chinese is arguably the most
@@ -35,22 +37,41 @@
                 in order to improve literacy.
             </p>
             <br>
+            <br>
         </div>
         <div class="page container-fluid content">
           <br>
-          <div class="row no-pad">
-          <div class="col-sm-4" id="parallelSetControllerTarget">
+          <div class="row no-pad" id="parallelSetContainer"  style="height:700px;">
+          <div class="col-sm-4 col-md-4" id="parallelSetControllerTarget">
           </div>
-          <div class="col-sm-8" id="parallelSetTarget" style="height:700px;width:100%;">
+          <div class="col-sm-8 col-md-8" id="parallelSetTarget">
           </div>
           </div>
         </div>
+        <div class="page container article">
+            <br>
+            <br>
+            <br>
+            <p>
+                The construction of Chinese character may seem arbitrary to a
+                non-speaker, however each Chinese character has deep meaning and
+                thousands of years of history encoded in it. Each Chinese
+                character contains a component called a "radical," which itself
+                is a character as well. Most radicals are each a component of
+                multiple different characters, and sometimes the meaning of the
+                radical carries over to several of the characters it appears in.
+                Therefore, characters that look similar often have similar or
+                related meanings.
+            </p>
+            <br>
+            <br>
+        </div>
         <div class="page container-fluid content">
           <br>
-          <div class="row no-pad">
+          <div class="row no-pad" id="forceDirectedGraphContainer" style="height:750px;">
           <div class="col-sm-4" id="forceDirectedGraphControllerTarget">
           </div>
-          <div class="col-sm-8" id="forceDirectedGraphTarget" style="height:700px;width:100%;">
+          <div class="col-sm-8" id="forceDirectedGraphTarget">
           </div>
           </div>
         </div>
@@ -72,6 +93,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.2/d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
 
         <!-- custom scripts -->
         <script src="index.js"></script>

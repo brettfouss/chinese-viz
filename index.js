@@ -4,6 +4,7 @@
     var PARALLEL_SET_CONTROLLER_TEMPLATE_PATH = "static/parallel-set-controller.hbs";
     var FORCE_DIRECTED_GRAPH_DATA_PATH = "static/nodes.json";
     var FORCE_DIRECTED_GRAPH_CONTROLLER_TEMPLATE_PATH = "static/force-directed-graph-controller.hbs";
+    var FORCE_DIRECTED_GRAPH_TOOLTIP_TEMPLATE_PATH = "static/force-directed-graph-tooltip.hbs";
 
     function loadData(path) {
         var deferred = jQuery.Deferred();
@@ -20,6 +21,7 @@
         loadData(CHINESE_VIS_DATA_PATH)
         .then(function(d) { return ParallelSetController.init(PARALLEL_SET_CONTROLLER_TEMPLATE_PATH, "#parallelSetControllerTarget", d) })
         .then(function(d) { return ForceDirectedGraphController.init(FORCE_DIRECTED_GRAPH_CONTROLLER_TEMPLATE_PATH, "#forceDirectedGraphControllerTarget", d)})
+        .then(function(d) { return ForceDirectedGraph.initTooltip(FORCE_DIRECTED_GRAPH_TOOLTIP_TEMPLATE_PATH, d); })
         .then(function(d) {
             ParallelSet.init(d, "#parallelSetTarget");
             ForceDirectedGraph.init(d, "#forceDirectedGraphTarget");
@@ -29,9 +31,7 @@
                 "focused": false,
                 "characters": Array(10).fill(null)
             });
-            ForceDirectedGraphController.render({
-                "radicals": []
-            });
+            ForceDirectedGraphController.render();
         }, function(error) {
             console.log("caught an error", error);
         });
@@ -95,8 +95,39 @@
                 ParallelSet.selectSets(queryString(d.i, d.j, d.k));
         }, $("#parallelSetTarget"));
     }
-
     function bindForceDirectedGraphEvents() {
+        ForceDirectedGraphController.bind(ForceDirectedGraphController.events.mouseoverNode,
+            function(elem) {
+                ForceDirectedGraph.setHighlight(elem, true);
+        }, $("#forceDirectedGraphTarget"));
+        ForceDirectedGraphController.bind(ForceDirectedGraphController.events.mouseoutNode,
+            function(elem) {
+                ForceDirectedGraph.setHighlight(elem, false);
+        }, $("#forceDirectedGraphTarget"));
+        ForceDirectedGraphController.bind(ForceDirectedGraphController.events.selectRadical,
+            function(id) {
+                ForceDirectedGraph.restart(id);
+                ForceDirectedGraphController.setActive(id);
+                ForceDirectedGraphController.render();
+        }, $("#forceDirectedGraphControllerTarget"));
+        ForceDirectedGraphController.bind(ForceDirectedGraphController.events.clickNode,
+            function(id) {
+                function getRoot(nodes) {
+                    for (var i = 0; i < nodes.length; i++) {
+                        if (nodes[i].degree == 0) {
+                            return nodes[i];
+                        }
+                    }
+                }
+                var next = ForceDirectedGraph.restart(id);
+                var root = getRoot(next.nodes);
+                if (root.type == "radical") {
+                    ForceDirectedGraphController.setActive(id);
+                } else {
+                    ForceDirectedGraphController.setActive(-1);
+                }
+                ForceDirectedGraphController.render();
+        }, $("#forceDirectedGraphTarget"));
     }
 
     $(document).ready(function() {

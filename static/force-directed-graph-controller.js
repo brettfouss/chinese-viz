@@ -1,10 +1,44 @@
 var ForceDirectedGraphController = (function() {
 
     var data = {
-        "radicals": []
+        "radicals": [],
+        "active": 0
     };
     var target = {};
     var template = {};
+    var events = {};
+
+    Handlebars.registerHelper("isActive", function(id, block) {
+        if (id == data.active) {
+            return block.fn(this);
+        } else {
+            return block.inverse(this);
+        }
+    });
+
+    events.mouseoverNode = function(t, fn) {
+        $(t).on("mouseover", ".node", function(d) {
+              fn(this);
+        });
+    }
+
+    events.mouseoutNode = function(t, fn) {
+        $(t).on("mouseout", ".node", function(d) {
+              fn(this);
+        });
+    }
+
+    events.selectRadical = function(t, fn) {
+        $(t).on("click", ".radical-selector", function(d) {
+              fn($(this).attr("name"));
+        });
+    }
+
+    events.clickNode = function(t, fn) {
+        $(t).on("click", ".node", function(d) {
+              fn($(this).attr("name"));
+        });
+    }
 
     function initRadicals(d) {
         data.radicals = [];
@@ -15,9 +49,16 @@ var ForceDirectedGraphController = (function() {
         }
     }
 
-    function render(state) {
-        state.radicals = data.radicals;
-        $(target).html(template(state));
+    function setActive(id) {
+        data.active = parseInt(id);
+    }
+
+    function bind(e, fn, t) {
+            e(t, fn);
+    }
+
+    function render() {
+        $(target).html(template(data));
     }
 
     function init(path, elem, data) {
@@ -35,7 +76,10 @@ var ForceDirectedGraphController = (function() {
 
     return {
         "init": init,
-        "render": render
+        "render": render,
+        "bind": bind,
+        "events": events,
+        "setActive": setActive
     };
 
 }());
