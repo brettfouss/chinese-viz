@@ -28,28 +28,28 @@ def main():
     # note: "characters" variable is a list passed by reference here, and extractData will
     # remove characters from it if it doesn't find any data on that character. This is to
     # ensure a complete data set. 
-    definitions_of_characters = extractData(base_path, UNIHAN_READINGS_FILE, characters, "kDefinition")
+    #definitions_of_characters = extractData(base_path, UNIHAN_READINGS_FILE, characters, "kDefinition")
     pinyin_of_characters = extractData(base_path, UNIHAN_READINGS_FILE, characters, "kMandarin")
-    rskangxi_of_characters = extractData(base_path, UNIHAN_RSCOUNTS_FILE, characters, "kRSKangXi")
-    frequency_of_characters = extractData(base_path, UNIHAN_DICTIONARYLIKEDATA_FILE, characters, "kFrequency")
-    grade_level_of_characters = extractData(base_path, UNIHAN_DICTIONARYLIKEDATA_FILE, characters, "kGradeLevel")
-    total_strokes_of_characters = extractData(base_path, UNIHAN_DICTIONARYLIKEDATA_FILE, characters, "kTotalStrokes")
+    #rskangxi_of_characters = extractData(base_path, UNIHAN_RSCOUNTS_FILE, characters, "kRSKangXi")
+    #frequency_of_characters = extractData(base_path, UNIHAN_DICTIONARYLIKEDATA_FILE, characters, "kFrequency")
+    #grade_level_of_characters = extractData(base_path, UNIHAN_DICTIONARYLIKEDATA_FILE, characters, "kGradeLevel")
+    #total_strokes_of_characters = extractData(base_path, UNIHAN_DICTIONARYLIKEDATA_FILE, characters, "kTotalStrokes")
 
     # don't throw away any characters for this one.
     # "simplified variant" is only listed if the traditional character differs from the simplified.
-    characters_copy = list(characters)
-    simplified_variants_of_characters = extractData(base_path, UNIHAN_VARIANTS_FILE, characters_copy, "kSimplifiedVariant")
+    #characters_copy = list(characters)
+    #simplified_variants_of_characters = extractData(base_path, UNIHAN_VARIANTS_FILE, characters_copy, "kSimplifiedVariant")
 
     for character in characters:
         c = dict()
         c["character"] = character
-        c["definition"] = definitions_of_characters[character]
+        #c["definition"] = definitions_of_characters[character]
         c["pinyin"] = pinyin_of_characters[character]
-        c["radical"] = rskangxi_to_radical(rskangxi_of_characters[character], radicals)
-        c["frequency"] = frequency_of_characters[character]
-        c["gradeLevel"] = grade_level_of_characters[character]
-        c["totalStrokes"] = total_strokes_of_characters[character]
-        c["simplified"] = simplified_variants_of_characters[character] if character in simplified_variants_of_characters else character
+        #c["radical"] = rskangxi_to_radical(rskangxi_of_characters[character], radicals)
+        #c["frequency"] = frequency_of_characters[character]
+        #c["gradeLevel"] = grade_level_of_characters[character]
+        #c["totalStrokes"] = total_strokes_of_characters[character]
+        #c["simplified"] = simplified_variants_of_characters[character] if character in simplified_variants_of_characters else character
         data["data"].append(c)
 
     print("writing", out_path)
