@@ -19,3 +19,26 @@
 g.node {
     cursor: pointer !important;
 }
+
+.splash-image {
+    padding: 0px;
+}
+
+.splash-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.splash-header {
+    color: #fff;
+    font-size: 2.5rem;
+    text-shadow: 5px 5px #263238;
+}
+
+.splash-subtitle {
+    color: #fff;
+    padding: 5px;
+    background-color: #263238;
+}
