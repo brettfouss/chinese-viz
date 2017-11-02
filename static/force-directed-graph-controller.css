@@ -23,12 +23,12 @@
 
 .radical-selector:hover {
     border: 1px solid #000;
-    background-color: yellow !important;
+    background-color: #FFFF00 !important;
     z-index:1000;
 }
 
 .radical-selector.active {
-    background-color: yellow !important;
+    background-color: #FFFF00 !important;
 }
 
 .d3-tip {

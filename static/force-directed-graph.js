@@ -20,11 +20,11 @@ var ForceDirectedGraph = (function() {
     var encodings = {
         "nodeStroke": function(d) {
             if (d.type == "radical") {
-                return "red";
+                return "#F44336";
             } else if (d.type == "character") {
-                return "orange";
+                return "#FFC107";
             } else {
-                return "grey";
+                return "#9E9E9E";
             }
         }
     };
@@ -196,7 +196,7 @@ var ForceDirectedGraph = (function() {
         link = link.enter()
                    .append("line")
                    .attr("class", "link")
-                   .attr("stroke", "grey")
+                   .attr("stroke", "#CFD8DC")
                    .attr("stroke-width", "1.5px")
                    .merge(link);
 

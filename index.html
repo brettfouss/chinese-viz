@@ -3,6 +3,8 @@
 <head>
         <base href="/">
 
+        <title>Brett Fouss | Visualizing the Chinese Language</title>
+
         <!-- GOOGLE FONTS -->
         <link href="https://fonts.googleapis.com/css?family=Abel|Noto+Serif|Secular+One" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"/>
@@ -25,30 +27,40 @@
         </div>
 
         <div class="page container article">
-            <br><br>
+            <br>
+            <br>
+            <br>
             <p>
                 Due to it's use of <a target="_blank" href="https://en.wikipedia.org/wiki/Logogram">logographic</a> characters, Chinese is arguably the most
                 complex and fascinating written language in the world. While most other
                 civilizations and cultures developed alphabet-based writing systems, the unique
-                and ancient Chinese writing system has survived thousands of years.
+                Chinese writing system has survived thousands of years.
             </p>
+            <br>
             <p>
-                Each word in written Chinese is composed of a distinct character or combination of characters; characters offer
-                no indication of how to pronounce the word. The pronunciations of each word
+                Each word in written Chinese is composed of a distinct character or combination of characters;
+                characters offer no indication of how to pronounce the word. Pronunciations of words
                 must be memorized. The system is so inherently difficult that illiteracy was high
                 in China for thousands of years. In fact, in the 1930's and 40's, Chinese scholars created
                 <a target="_blank" href="https://en.wikipedia.org/wiki/Simplified_Chinese_characters">simplified characters</a>
                 in order to improve literacy.
             </p>
             <br>
+            <p>
+                First, we focus on three questions regarding Chinese characters. How complicated are
+                different characters to write? When are more simple or more complex characters
+                taught in school? And finally, how often are characters of varying complexity and
+                grade level used?
+            </p>
+            <br>
             <br>
         </div>
         <div class="page container-fluid content">
           <br>
-          <div class="row no-pad" id="parallelSetContainer"  style="height:700px;">
+          <div class="row no-pad" id="parallelSetContainer"  style="min-height:100%;background-color:#ECEFF1;">
           <div class="col-sm-4 col-md-4" id="parallelSetControllerTarget">
           </div>
-          <div class="col-sm-8 col-md-8" id="parallelSetTarget">
+          <div class="col-sm-8 col-md-8" id="parallelSetTarget" style="height:750px;">
           </div>
           </div>
         </div>
@@ -72,10 +84,10 @@
         </div>
         <div class="page container-fluid content">
           <br>
-          <div class="row no-pad" id="forceDirectedGraphContainer" style="height:750px;">
+          <div class="row no-pad" id="forceDirectedGraphContainer" style="min-height:100%;background-color:#ECEFF1;">
           <div class="col-sm-4" id="forceDirectedGraphControllerTarget">
           </div>
-          <div class="col-sm-8" id="forceDirectedGraphTarget">
+          <div class="col-sm-8" id="forceDirectedGraphTarget" style="height:100%;min-height:750px;">
           </div>
           </div>
         </div>
@@ -85,10 +97,17 @@
             <br>
             <p>
                 <h3 class="text-left">Notes</h3>
-                Radical, frequency, stroke count and grade level data was taken from the
+                <br>
+                Radical, frequency, stroke count and grade level data was taken from
                 the Unicode Consortium's <a href="http://www.unicode.org/charts/unihan.html">
                 Unihan database</a>. Definitions and pinyin from
                 <a href="https://www.mdbg.net/chinese/dictionary?page=cc-cedict">cedict</a>.
+                <br>
+                <br>
+                All the code for this project, including both visualizations,
+                is available on Github <a href="https://github.com/brettfouss/chinese-vis">here</a>.
+                Help me debug! If you find an bug, please submit it to the repository's
+                <a href="https://github.com/brettfouss/chinese-vis/issues">issue tracker</a>.
             </p>
             <br>
             <br>
@@ -97,10 +116,7 @@
 
         <!-- the footer -->
         <div class="row footer">
-                <div class="page">
-                <div class="col-sm-12">
-                        <p class="text-sm-left">Thanks for visiting!</p>
-                </div>
+                <div class="page container">
                 </div>
         </div>
         <!-- end of the footer -->
